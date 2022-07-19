@@ -1,0 +1,30 @@
+﻿<Window x:Class="AmazingApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AmazingApp" xmlns:local1="clr-namespace:AmazingApp.ViewModels"
+        mc:Ignorable="d"
+        Title="Relations" Height="350" Width="525">
+    <Window.DataContext>
+        <!-- Declaratively create an instance of our SongViewModel -->
+        <local1:RelationViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Content="Big Phat GUI" />
+        <Label Grid.Column="0" Grid.Row="1" Content="Relation:  " />
+        <Label Grid.Column="1" Grid.Row="1" Content="{Binding RelationId}" />
+        <Button Grid.Column="1" Grid.Row="2" Name="ButtonUpdateRelation" Content="Update Relation" Click="ButtonUpdateRelation_Click" />
+    </Grid>
+
+
+</Window>
