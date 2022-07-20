@@ -8,8 +8,8 @@ namespace AmazingApp.Models
     {
         
         public int RelationId { get; set; }
-        public string name { get; set; }
-        public int department { get; set; }
-        public string incoterm { get; set; }
+        public string Name { get; set; }
+        public int Department { get; set; }
+        public string Incoterm { get; set; }
     }
 }

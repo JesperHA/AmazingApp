@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AmazingApp.ViewModels;
+using System.Diagnostics;
 
 namespace AmazingApp
 {
@@ -29,12 +31,28 @@ namespace AmazingApp
         {
             InitializeComponent();
             _viewModel = (RelationViewModel)base.DataContext;
+            //DataContext = new RelationViewModel();
         }
 
-        private void ButtonUpdateRelation_Click(object sender, RoutedEventArgs e)
+        private async void ButtonLoadRelations(object sender, RoutedEventArgs e)
         {
-            ++_count;
-            _viewModel.RelationId = _count;
+            await _viewModel.ExecuteLoadRelationList();
+
+            relations.ItemsSource = _viewModel.RelationList;
+            //foreach (var relation in _viewModel.RelationList)
+            //{
+
+            //    Grid g = new Grid();
+            //    TextBlock tb = new TextBlock();
+
+            //    tb.Text = relation.RelationId.ToString();
+            //    g.Children.Add(tb);
+
+            //    Debug.WriteLine("{0}", relation.RelationId);
+            //}
+
+
+
         }
     }
 }

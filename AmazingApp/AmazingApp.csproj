@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
     <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
 </Project>
