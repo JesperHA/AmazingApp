@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
@@ -14,15 +15,40 @@ namespace AmazingApp.ViewModels
     class RelationViewModel : INotifyPropertyChanged
     {
 
-        public ObservableRangeCollection<Relation> RelationList { get; }
+        private ObservableCollection<Relation> _RelationList;
+        public ObservableCollection<Relation> RelationList
+        {
+            get { return _RelationList; }
+            set
+            {
+                _RelationList = value;
+                RaisePropertyChanged("RelationList");
+            }
+        }
+
         public Command LoadRelationListCommand { get; }
 
         RelationDataStore relationDataStore = new RelationDataStore();
 
         public RelationViewModel()
         {
-            RelationList = new ObservableRangeCollection<Relation>();
+            RelationList = new ObservableCollection<Relation>();
             LoadRelationListCommand = new Command(async () => await ExecuteLoadRelationList());
+        }
+
+        public async Task CreateRelation(int relationId, string name, int department, string incoterm)
+        {
+
+            try
+            {
+                Relation relation = new Relation { RelationId = relationId, Name = name, Department = department, Incoterm = incoterm };
+                await relationDataStore.CreateRelation(relation);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
 
@@ -33,8 +59,12 @@ namespace AmazingApp.ViewModels
             {
                 RelationList.Clear();
                 var items = await relationDataStore.GetRelationList();
-                RelationList.AddRange(items);
-
+                foreach (var item in items)
+                {
+                    RelationList.Add(item);
+                }
+                
+                Debug.WriteLine("Refreshed!");
 
             }
             catch (Exception ex)

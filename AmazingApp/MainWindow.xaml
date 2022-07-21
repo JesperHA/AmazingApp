@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AmazingApp" xmlns:local1="clr-namespace:AmazingApp.ViewModels"
         mc:Ignorable="d"
-        Title="Relations" Height="350" Width="525">
-    <Window.DataContext>
-        <!-- Declaratively create an instance of our SongViewModel -->
+        Title="Relations" Height="350" Width="525"
+        DataContext="{StaticResource sharedViewModel}">
+    <!--<Window.DataContext>
+        --><!-- Declaratively create an instance of our SongViewModel --><!--
         <local1:RelationViewModel />
-    </Window.DataContext>
+    </Window.DataContext>-->
  
     <Grid Name="root" Grid.Column="0" Grid.Row="0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="120"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -21,30 +22,25 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label Grid.Column="0" Grid.Row="0" Content="Big Phat UI"/>
-        <Label Grid.Row="0" Grid.Column="1" Content="Relations" />
+        <Label Grid.Row="0" Grid.Column="1" Content="Relations" x:Name="headerText" />
         <Grid Name="menu" Grid.Column="0" Grid.Row="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Content="Menu"/>
-            <Button Grid.Row="1" Name="ButtonUpdateRelation" Content="Update Relations" Click="ButtonLoadRelations" Height="20" Width="98" />
+            <Label Grid.Row="0" Grid.Column="0" Name="ButtonHome"  Content="Home" Height="25" MouseLeftButtonUp="ResetViews" Padding="8 0 0 10"/>
+            <Label Grid.Row="1" Grid.Column="0" Name="UpdateRelation" Content="Update Relations" MouseLeftButtonUp="ButtonLoadRelations" Height="25" Padding="8 0 0 0"/>
+            <Label Grid.Row="2" Grid.Column="0" Name="CreateRelation" Content="Create Relation" MouseLeftButtonUp="ButtonCreateRelation" Height="25" Padding="8 0 0 0"/>
         </Grid>
         <Grid x:Name="body" Grid.Row="1" Grid.Column="1">
-            <ListView Name="relations">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Relation ID" Width="70" DisplayMemberBinding="{Binding RelationId}"/>
-                        <GridViewColumn Header="Name" Width="90" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Department" Width="69" DisplayMemberBinding="{Binding Department}"/>
-                        <GridViewColumn Header="Default Incoterm" Width="100" DisplayMemberBinding="{Binding Incoterm}"/>
-                        
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <Frame x:Name="FrameContent" NavigationUIVisibility="Hidden">
+                
+            </Frame>
+
         </Grid>
     </Grid>
 

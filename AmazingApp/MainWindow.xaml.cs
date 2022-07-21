@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AmazingApp.ViewModels;
 using System.Diagnostics;
+using AmazingApp.Views;
 
 namespace AmazingApp
 {
@@ -26,33 +27,49 @@ namespace AmazingApp
 
 
         RelationViewModel _viewModel;
-        int _count = 0;
+        TableView _tableView;
+        InputView _inputView;
+
         public MainWindow()
         {
             InitializeComponent();
             _viewModel = (RelationViewModel)base.DataContext;
+            headerText.Content = "Home";
             //DataContext = new RelationViewModel();
         }
 
         private async void ButtonLoadRelations(object sender, RoutedEventArgs e)
         {
+            headerText.Content = "Relations";
             await _viewModel.ExecuteLoadRelationList();
 
-            relations.ItemsSource = _viewModel.RelationList;
-            //foreach (var relation in _viewModel.RelationList)
-            //{
+            FrameContent.NavigationService.RemoveBackEntry();
+            if (_tableView == null)
+            {
+                _tableView = new TableView();
+                
+            }
+            FrameContent.Navigate(_tableView);
 
-            //    Grid g = new Grid();
-            //    TextBlock tb = new TextBlock();
+        }
 
-            //    tb.Text = relation.RelationId.ToString();
-            //    g.Children.Add(tb);
+        private void ResetViews(object sender, RoutedEventArgs e)
+        {
+            headerText.Content = "Home";
+            FrameContent.NavigationService.RemoveBackEntry();
+            FrameContent.Navigate(null);
+        }
 
-            //    Debug.WriteLine("{0}", relation.RelationId);
-            //}
+        private void ButtonCreateRelation(object sender, RoutedEventArgs e)
+        {
+            headerText.Content = "Create new relation";
+            FrameContent.NavigationService.RemoveBackEntry();
+            if (_inputView == null)
+            {
+                _inputView = new InputView();
 
-
-
+            }
+            FrameContent.Navigate(_inputView);
         }
     }
 }

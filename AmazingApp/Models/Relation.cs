@@ -6,7 +6,7 @@ namespace AmazingApp.Models
 {
     public class Relation
     {
-        
+
         public int RelationId { get; set; }
         public string Name { get; set; }
         public int Department { get; set; }
