@@ -37,6 +37,27 @@ namespace AmazingApp.Services
             return relationList;
         }
 
+        public async Task UpdateRelation(Relation relation)
+        {
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = con.CreateCommand())
+                {
+                    command.CommandText = "UPDATE relation_information_350 SET name = @name, department = @department, incoterm = @incoterm WHERE relation_id = @relationId ";
+                    command.Parameters.AddWithValue("@relationId", relation.RelationId);
+                    command.Parameters.AddWithValue("@name", relation.Name);
+                    command.Parameters.AddWithValue("@department", relation.Department);
+                    command.Parameters.AddWithValue("@incoterm", relation.Incoterm);
+                    con.Open();
+                    command.ExecuteNonQuery();
+                    con.Close();
+                }
+
+            }
+
+        }
+
         public async Task CreateRelation(Relation relation)
         {
 
@@ -72,6 +93,7 @@ namespace AmazingApp.Services
 
                     trans.Rollback();
                     Debug.WriteLine("Transaction failed!");
+                    throw;
                 }
                 finally
                 {
@@ -79,26 +101,9 @@ namespace AmazingApp.Services
                     Debug.WriteLine("Connection closed!");
                 }
 
-
-
-
-                //using (SqlCommand cmd = new SqlCommand(query, con, trans))
-                //{
-                //    cmd.Parameters.AddWithValue("@relationId", relation.RelationId);
-                //    cmd.Parameters.AddWithValue("@name", relation.Name);
-                //    cmd.Parameters.AddWithValue("@department", relation.Department);
-                //    cmd.Parameters.AddWithValue("@incoterm", relation.Incoterm);
-
-
-                //    int result = cmd.ExecuteNonQuery();
-                //    if(result < 0)
-                //    {
-                //        Debug.WriteLine("Failed to insert Relation!");
-                //    }
-
-                //}
             }
 
         }
+
     }
 }

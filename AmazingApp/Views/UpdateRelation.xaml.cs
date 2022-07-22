@@ -15,31 +15,35 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 
 namespace AmazingApp.Views
 {
-
-    
     /// <summary>
-    /// Interaction logic for InputView.xaml
+    /// Interaction logic for UpdateRelation.xaml
     /// </summary>
-    public partial class InputView : Page
+    public partial class UpdateRelation : Page
     {
 
+        Relation _relation;
         BrushConverter bc = new BrushConverter();
 
         RelationViewModel _viewModel;
-        public InputView()
+        public UpdateRelation(Relation relation)
         {
             InitializeComponent();
             _viewModel = (RelationViewModel)base.DataContext;
+            _relation = relation;
+            RelationId.Text = _relation.RelationId.ToString();
+            Name.Text = _relation.Name;
+            Department.Text = _relation.Department.ToString();
+            Incoterm.Text = _relation.Incoterm;
         }
 
-        private async void CreateRelation(object sender, RoutedEventArgs e)
+        private async void ClickUpdateRelation(object sender, RoutedEventArgs e)
         {
 
             Storyboard sb = Resources["sbHideAnimation"] as Storyboard;
+
 
 
             try
@@ -51,7 +55,7 @@ namespace AmazingApp.Views
                 try
                 {
 
-                    await _viewModel.CreateRelation(relationId, name, department, incoterm);
+                    await _viewModel.UpdateRelation(relationId, name, department, incoterm);
                     Debug.WriteLine("Succes!");
                     alreadyExist.Visibility = Visibility.Hidden;
                     Brush brush = (Brush)bc.ConvertFrom("#34344b");
@@ -69,9 +73,11 @@ namespace AmazingApp.Views
                     {
                         alreadyExist.Visibility = Visibility.Visible;
                     }
+
                     Debug.WriteLine("Failed to insert to DB");
+                    Debug.WriteLine(error);
                     ErrorImage.Visibility = Visibility.Visible;
-                    
+
                     sb.Begin(ErrorImage);
                 }
             }
@@ -90,9 +96,10 @@ namespace AmazingApp.Views
 
 
 
-            
+
 
 
         }
+
     }
 }

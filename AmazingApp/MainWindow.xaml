@@ -5,14 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AmazingApp" xmlns:local1="clr-namespace:AmazingApp.ViewModels"
         mc:Ignorable="d"
-        Title="Relations" Height="350" Width="525"
-        DataContext="{StaticResource sharedViewModel}">
+        Title="Relations" Height="400" Width="650"
+        DataContext="{StaticResource sharedViewModel}"
+        WindowStartupLocation="CenterScreen" BorderBrush="#22202F">
     <!--<Window.DataContext>
         --><!-- Declaratively create an instance of our SongViewModel --><!--
         <local1:RelationViewModel />
     </Window.DataContext>-->
- 
-    <Grid Name="root" Grid.Column="0" Grid.Row="0">
+
+
+    <Window.Resources>
+        <Style x:Key="myButton"  TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#34344b"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="Padding" Value="9,0,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+                        </Border>                        
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#494969"/>
+                    <Setter Property="Foreground" Value="#FFFFFF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+
+
+    <Grid Name="root" Grid.Column="0" Grid.Row="0" Background="#22202F">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
             <ColumnDefinition Width="*"/>
@@ -21,50 +48,34 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="0" Content="Big Phat UI"/>
-        <Label Grid.Row="0" Grid.Column="1" Content="Relations" x:Name="headerText" />
-        <Grid Name="menu" Grid.Column="0" Grid.Row="1">
+        <Label Grid.Column="0" Grid.Row="0" Content="Relation UI" Foreground="#FFFFFF" Margin="0,8,0,0"/>
+        <Label Grid.Row="0" Grid.Column="1" Content="Double click to edit relation" x:Name="headerText" Foreground="#FFFFFF" Margin="0,8,0,0"/>
+        <Grid Name="menu" Grid.Column="0" Grid.Row="1" Margin="0,10,0,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Name="ButtonHome"  Content="Home" Height="25" MouseLeftButtonUp="ResetViews" Padding="8 0 0 10"/>
-            <Label Grid.Row="1" Grid.Column="0" Name="UpdateRelation" Content="Update Relations" MouseLeftButtonUp="ButtonLoadRelations" Height="25" Padding="8 0 0 0"/>
-            <Label Grid.Row="2" Grid.Column="0" Name="CreateRelation" Content="Create Relation" MouseLeftButtonUp="ButtonCreateRelation" Height="25" Padding="8 0 0 0"/>
+
+            <Button Style="{StaticResource myButton}" Grid.Row="0" Grid.Column="0" Name="ButtonHome" Content="Home" Height="25" Click="ResetViews"/>
+            <Button Style="{StaticResource myButton}" Grid.Row="1" Grid.Column="0" Name="ButtonUpdateRelations" Content="Update Relations" Height="25" Click="LoadRelations"/>
+            <Button Style="{StaticResource myButton}" Grid.Row="2" Grid.Column="0" Name="ButtonCreateRelation" Content="Create Relation" Height="25" Click="CreateRelation"/>
+            <!--<Label Grid.Row="0" Grid.Column="0" Name="ButtonHome"  Content="Home" Height="25" MouseLeftButtonUp="ResetViews" Padding="8 0 0 10" Foreground="#FFFFFF"/>-->
+            <!--<Label Grid.Row="1" Grid.Column="0" Name="UpdateRelation" Content="Update Relations" MouseLeftButtonUp="ButtonLoadRelations" Height="25" Padding="8 0 0 0" Foreground="#FFFFFF"/>-->
+            <!--<Label Grid.Row="2" Grid.Column="0" Name="CreateRelation" Content="Create Relation" MouseLeftButtonUp="ButtonCreateRelation" Height="25" Padding="8 0 0 0" Foreground="#FFFFFF"/>-->
+       
+        
         </Grid>
         <Grid x:Name="body" Grid.Row="1" Grid.Column="1">
             <Frame x:Name="FrameContent" NavigationUIVisibility="Hidden">
+
+                          
                 
             </Frame>
 
         </Grid>
     </Grid>
-
-
-
-
-
-
-    <!--<Grid x:Name="rootGrid" Margin="0,0,0,0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <Label Grid.Column="0" Grid.Row="0" Content="Big Phat GUI" />
-        <Label Grid.Column="0" Grid.Row="1" Content="Relation  " />
-        <Button Grid.Column="1" Grid.Row="0" Name="ButtonUpdateRelation" Content="Update Relation" Click="ButtonLoadRelations" Padding="0 0 0 0" Margin="20 0 0 0"/>
-
-    </Grid>-->
-
-
-
 </Window>

@@ -29,18 +29,20 @@ namespace AmazingApp
         RelationViewModel _viewModel;
         TableView _tableView;
         InputView _inputView;
+        HomeView _homeView;
 
         public MainWindow()
         {
             InitializeComponent();
             _viewModel = (RelationViewModel)base.DataContext;
             headerText.Content = "Home";
+            Loaded += ResetViews;
             //DataContext = new RelationViewModel();
         }
 
-        private async void ButtonLoadRelations(object sender, RoutedEventArgs e)
+        private async void LoadRelations(object sender, RoutedEventArgs e)
         {
-            headerText.Content = "Relations";
+            headerText.Content = "Double click to edit relation";
             await _viewModel.ExecuteLoadRelationList();
 
             FrameContent.NavigationService.RemoveBackEntry();
@@ -57,10 +59,14 @@ namespace AmazingApp
         {
             headerText.Content = "Home";
             FrameContent.NavigationService.RemoveBackEntry();
-            FrameContent.Navigate(null);
+            if(_homeView == null)
+            {
+                _homeView = new HomeView();
+            }
+            FrameContent.Navigate(_homeView);
         }
 
-        private void ButtonCreateRelation(object sender, RoutedEventArgs e)
+        private void CreateRelation(object sender, RoutedEventArgs e)
         {
             headerText.Content = "Create new relation";
             FrameContent.NavigationService.RemoveBackEntry();

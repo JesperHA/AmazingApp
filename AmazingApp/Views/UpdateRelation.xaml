@@ -1,4 +1,4 @@
-﻿<Page x:Class="AmazingApp.Views.InputView"
+﻿<Page x:Class="AmazingApp.Views.UpdateRelation"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,30 +6,8 @@
       xmlns:local="clr-namespace:AmazingApp.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="InputView"
+      Title="UpdateRelation"
       DataContext="{StaticResource sharedViewModel}">
-
-    <!--<Page.Resources>
-
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="Green"/>
-
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                        
-                    </ControlTemplate>
-                </Setter.Value>
-                
-            </Setter>
-
-        </Style>
-
-    </Page.Resources>-->
 
     <Page.Resources>
         <Storyboard x:Key="sbHideAnimation">
@@ -56,14 +34,14 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Foreground="#FFFFFF">Relation ID</Label>
             <Label Grid.Row="0" x:Name="alreadyExist" Foreground="RED" Margin="170 0, 0, 0" Visibility="Hidden">Already Exist</Label>
-            <TextBox x:Name="RelationId" Grid.Row="1" Margin="0,0,0,0" Background="#34344b" Foreground="#FFFFFF"/>
+            <TextBox x:Name="RelationId" Grid.Row="1" Margin="0,0,0,0" Background="#34344b" Foreground="Gray" IsReadOnly="True"/>
             <Label Grid.Row="2" Foreground="#FFFFFF">Name</Label>
             <TextBox x:Name="Name" Grid.Row="3" Margin="0,0,0,0" Background="#34344b" Foreground="#FFFFFF"/>
             <Label Grid.Row="4" Foreground="#FFFFFF">Department</Label>
             <TextBox x:Name="Department" Grid.Row="5" Margin="0,0,0,0" Background="#34344b" Foreground="#FFFFFF"/>
             <Label Grid.Row="6" Foreground="#FFFFFF">Default Incoterm</Label>
             <TextBox x:Name="Incoterm" Grid.Row="7" Margin="0,0,0,0" Background="#34344b" Foreground="#FFFFFF"/>
-            <Button  Grid.Row="8" x:Name="SubmitButton" Content="Submit" Click="CreateRelation" Width="120" HorizontalAlignment="Left" Margin="0,10,0,0"
+            <Button  Grid.Row="8" x:Name="SubmitButton" Content="Submit" Click="ClickUpdateRelation" Width="120" HorizontalAlignment="Left" Margin="0,10,0,0"
                      Foreground="#FFFFFF">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">

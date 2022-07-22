@@ -20,23 +20,69 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
         </Style>
-
     </Page.Resources>
 
     <Grid>
-        <ListView Name="relations" BorderThickness="0">
+        <ListView Name="relations" BorderThickness="0" Background="Transparent" Margin="0,0,0,40" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
+                    <EventSetter Event="MouseDoubleClick" Handler="ItemDoubleClick"/>
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="#20202F"/>
+                            <Setter Property="Background" Value="#20202F"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="#20202F"/>
+                            <Setter Property="Background" Value="#20202F"/>
+                            <Setter Property="BorderBrush" Value="#34344b"/>
+                            <!--<Setter Property="BorderThickness" Value="0"/>-->
+                        </Trigger>
+                        
+                                              
+                        
+                    </Style.Triggers>
+                    <!--<Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Green"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                    </Style.Resources>-->
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.View>
-                <GridView ColumnHeaderContainerStyle="{StaticResource myHeaderStyle}">
-                    <GridViewColumn Header="Relation ID" Width="70" DisplayMemberBinding="{Binding RelationId}"/>
-                    <GridViewColumn Header="Name" Width="90" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Department" Width="69" DisplayMemberBinding="{Binding Department}"/>
-                    <GridViewColumn Header="Default Incoterm" Width="100" DisplayMemberBinding="{Binding Incoterm}"/>
+                <GridView ColumnHeaderContainerStyle="{StaticResource myHeaderStyle}" >
+                    <GridViewColumn Header="Relation ID" Width="70">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="Txt" Text="{Binding RelationId}" Foreground="#FFFFFF" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Name" Width="90">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="Txt" Text="{Binding Name}" Foreground="#FFFFFF" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Department" Width="69">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="Txt" Text="{Binding Department}" Foreground="#FFFFFF" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Default Incoterm" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock x:Name="Txt" Text="{Binding Incoterm}" Foreground="#FFFFFF" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
 
                 </GridView>
             </ListView.View>

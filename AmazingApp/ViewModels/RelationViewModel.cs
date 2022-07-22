@@ -50,6 +50,20 @@ namespace AmazingApp.ViewModels
                 throw;
             }
         }
+        public async Task UpdateRelation(int relationId, string name, int department, string incoterm)
+        {
+
+            try
+            {
+                Relation relation = new Relation { RelationId = relationId, Name = name, Department = department, Incoterm = incoterm };
+                await relationDataStore.UpdateRelation(relation);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
 
         public async Task ExecuteLoadRelationList()

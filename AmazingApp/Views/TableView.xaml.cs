@@ -1,6 +1,8 @@
-﻿using AmazingApp.ViewModels;
+﻿using AmazingApp.Models;
+using AmazingApp.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +30,13 @@ namespace AmazingApp.Views
 
             Loaded += TableView_Loaded;
             relations.ItemsSource = _viewModel.RelationList;
+        }
+
+        protected void ItemDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var relation = ((ListViewItem)sender).Content as Relation;
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(new UpdateRelation(relation));
         }
 
         private async void TableView_Loaded(object sender, RoutedEventArgs e)
