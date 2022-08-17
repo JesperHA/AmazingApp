@@ -65,9 +65,9 @@
                 </Button.Style>
             </Button>
             <Image x:Name="OkImage" HorizontalAlignment="Left" Height="25" Margin="130,10,0,0" Grid.Row="8" VerticalAlignment="Center" 
-                   Width="35" Source="C:\Users\jeaadmin\source\repos\AmazingApp\AmazingApp\Resources\OK.png" Visibility="Hidden"/>
+                   Width="35" Source="..\Resources\OK.png" Visibility="Hidden"/>
             <Image x:Name="ErrorImage" HorizontalAlignment="Left" Height="25" Margin="130,10,0,0" Grid.Row="8" VerticalAlignment="Center" 
-                   Width="35" Source="C:\Users\jeaadmin\source\repos\AmazingApp\AmazingApp\Resources\Error.png" Visibility="Hidden"/>
+                   Width="35" Source="..\Resources\Error.png" Visibility="Hidden"/>
         </Grid>
 
     </Grid>

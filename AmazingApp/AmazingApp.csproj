@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Error.png" />
     <None Remove="Resources\logo.ico" />
+    <None Remove="Resources\OK.png" />
   </ItemGroup>
 
   <ItemGroup>	  <Reference Include="System" />
@@ -19,7 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Error.png" />
     <Resource Include="Resources\logo.ico" />
+    <Resource Include="Resources\OK.png" />
   </ItemGroup>
 
 </Project>

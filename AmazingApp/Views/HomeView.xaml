@@ -10,8 +10,8 @@
       DataContext="{StaticResource sharedViewModel}">
 
     <Grid>
-        <Label Background="Transparent" Foreground="#FFFFFF" Content="You are now witnessing Jesper Andersen amazing GUI" Margin="10,10,0,0" Height="30" VerticalAlignment="Top"/>
-        <Label Background="Transparent" Foreground="#FFFFFF" Content="In here you can Add end Update customers in the Database without the need to contact IT :)" 
+        <Label Background="Transparent" Foreground="#FFFFFF" Content="You are now witnessing Jesper Andersen's amazing Graphical User Interface" Margin="10,10,0,0" Height="30" VerticalAlignment="Top"/>
+        <Label Background="Transparent" Foreground="#FFFFFF" Content="In here you can add and update customers in the database without contacting IT :)" 
                Margin="10,50,0,0" Height="30" VerticalAlignment="Top"/>
     </Grid>
 </Page>
