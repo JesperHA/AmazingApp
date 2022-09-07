@@ -34,6 +34,7 @@ namespace AmazingApp.Views
 
         protected void ItemDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            ((MainWindow)Application.Current.MainWindow).headerText.Content = "Update relation";
             var relation = ((ListViewItem)sender).Content as Relation;
             NavigationService nav = NavigationService.GetNavigationService(this);
             nav.Navigate(new UpdateRelation(relation));
