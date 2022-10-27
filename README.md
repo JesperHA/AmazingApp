@@ -4,4 +4,4 @@ This will remove the workload from the IT department
 and make the system less prone to communication errors.
 
 The project is currently only functional in the test environment,
-and would have to be altered to use production systemvariables.
+and would have to be refactored altered and to use production systemvariables.
